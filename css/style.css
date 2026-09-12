@@ -1,0 +1,491 @@
+/* ==========================================================================
+   1. Design Tokens (Custom Properties)
+   ========================================================================== */
+   :root {
+    /* Colors */
+    --color-bg: #f8f9fa;
+    --color-bg-alt: #ffffff;
+    --color-text: #111111;
+    --color-text-light: #555555;
+    --color-white: #ffffff;
+    --color-overlay: rgba(0, 0, 0, 0.65);
+    
+    /* Typography */
+    --font-primary: "Inter", system-ui, -apple-system, sans-serif;
+    --text-xs: clamp(0.75rem, 1vw, 0.875rem);
+    --text-sm: clamp(0.875rem, 1.5vw, 1rem);
+    --text-base: clamp(1rem, 2vw, 1.125rem);
+    --text-lg: clamp(1.5rem, 3vw, 2rem);
+    --text-xl: clamp(2.5rem, 6vw, 4.5rem);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 4rem;
+    --spacing-xl: 8rem;
+    
+    /* Grid Configuration */
+    --grid-gap: 1.5rem;
+    
+    /* Radii & Effects */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+    --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.3s ease-out;
+}
+
+/* ==========================================================================
+   2. CSS Reset & Global Styles
+   ========================================================================== */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-primary);
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Layout Utilities */
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* ==========================================================================
+   3. Header Navigation
+   ========================================================================== */
+.site-header {
+    background-color: var(--color-bg-alt);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.header-inner {
+    display: grid;
+    /* Explicit grid for header: 2 columns */
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.brand-logo {
+    font-size: var(--text-lg);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.main-nav {
+    justify-self: end;
+}
+
+.nav-list {
+    display: grid;
+    /* Implicit column generation for nav links */
+    grid-auto-flow: column;
+    gap: var(--spacing-md);
+}
+
+.nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-text);
+    transition: width var(--transition-fast);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+    width: 100%;
+}
+
+/* ==========================================================================
+   4. Hero Section
+   ========================================================================== */
+.hero {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-md);
+    align-items: center;
+    min-height: 60vh;
+}
+
+.hero__title {
+    font-size: var(--text-xl);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--spacing-md);
+}
+
+.hero__description {
+    font-size: var(--text-base);
+    color: var(--color-text-light);
+    max-width: 500px;
+    margin-bottom: var(--spacing-md);
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background-color: var(--color-text);
+    color: var(--color-white);
+    font-weight: 600;
+    border-radius: var(--radius-sm);
+    transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.btn:hover, .btn:focus-visible {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+/* Hero abstract visual - Demonstrating CSS Grid purely for art */
+.hero__visual {
+    display: none; /* Hidden on mobile */
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 120px);
+    gap: var(--spacing-xs);
+    width: 100%;
+    max-width: 400px;
+    justify-self: end;
+}
+
+.grid-cube {
+    background: #e0e0e0;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-slow);
+}
+
+.grid-cube:nth-child(1) { grid-column: 1 / 3; }
+.grid-cube:nth-child(4) { grid-row: 1 / 3; grid-column: 3 / 4; background: var(--color-text); }
+.grid-cube:hover { background: #ccc; }
+
+/* ==========================================================================
+   5. Gallery Global Styles & Cards
+   ========================================================================== */
+.gallery-section {
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.section-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.section-title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin-bottom: var(--spacing-xs);
+}
+
+.section-subtitle {
+    color: var(--color-text-light);
+    font-size: var(--text-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.gallery__card {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    background-color: #eee; /* Fallback loading color */
+    cursor: pointer;
+    /* Establish grid on the card itself to easily layer overlay on top of image */
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* Using object-fit for perfectly sized grid imagery */
+.gallery__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    transition: transform var(--transition-slow);
+}
+
+.gallery__overlay {
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: var(--spacing-md);
+    opacity: 0;
+    transition: opacity var(--transition-slow);
+    z-index: 2;
+}
+
+.gallery__card:hover .gallery__image,
+.gallery__card:focus-within .gallery__image {
+    transform: scale(1.05);
+}
+
+.gallery__card:hover .gallery__overlay,
+.gallery__card:focus-within .gallery__overlay {
+    opacity: 1;
+}
+
+/* Card Typography */
+.gallery__caption {
+    color: var(--color-white);
+    transform: translateY(20px);
+    transition: transform var(--transition-slow);
+}
+
+.gallery__card:hover .gallery__caption,
+.gallery__card:focus-within .gallery__caption {
+    transform: translateY(0);
+}
+
+.gallery__category {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.gallery__title {
+    font-size: var(--text-base);
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.gallery__location {
+    font-size: var(--text-xs);
+    color: rgba(255,255,255,0.6);
+}
+
+/* ==========================================================================
+   6. Architecture: Explicit Grid (Featured Gallery)
+   ========================================================================== */
+/* Mobile First: Single Column fallback */
+.gallery--explicit {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--grid-gap);
+}
+
+/* Provide an aspect ratio to mobile cards to prevent layout shifts */
+.gallery--explicit .gallery__card {
+    aspect-ratio: 4/3;
+}
+
+/* ==========================================================================
+   7. Architecture: Implicit Grid (Discover Gallery)
+   ========================================================================== */
+.gallery--implicit {
+    display: grid;
+    /* 
+       AUTO-FIT: Dynamically creates as many columns as will fit.
+       MINMAX: Ensures columns are at least 280px wide, but expand to fill fractions (1fr).
+    */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    
+    /* IMPLICIT ROWS: Any new row created gets a strict 300px height */
+    grid-auto-rows: 300px;
+    
+    /* DENSE FLOW: Backfills gaps left by spanning elements to avoid holes */
+    grid-auto-flow: dense;
+    
+    gap: var(--grid-gap);
+}
+
+/* Mobile adjustments for Implicit Grid */
+.gallery--implicit .gallery__card {
+    height: 100%;
+}
+
+/* ==========================================================================
+   8. Responsive Media Queries
+   ========================================================================== */
+
+/* Tablet Breakpoint (768px and up) */
+@media (min-width: 768px) {
+    /* Hero layout adjusts to two columns */
+    .hero {
+        grid-template-columns: 1fr 1fr;
+    }
+    .hero__visual {
+        display: grid; /* Reveal the visual */
+    }
+
+    /* Implicit Gallery Span Utility Classes */
+    /* Only allow spanning on screens wide enough to support it */
+    .span-col-2 {
+        grid-column: span 2;
+    }
+    .span-row-2 {
+        grid-row: span 2;
+    }
+}
+
+/* Desktop Breakpoint (1024px and up) */
+@media (min-width: 1024px) {
+    /* 
+       Desktop Explicit Grid Definition
+       - Explicitly defines 4 columns
+       - Explicitly defines 2 rows of 400px each
+    */
+    .gallery--explicit {
+        /* Fractional units distribute space relative to one another */
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 400px);
+    }
+    
+    /* Remove aspect ratio constraint from mobile */
+    .gallery--explicit .gallery__card {
+        aspect-ratio: auto;
+    }
+
+    /* Specific Grid Cell Placements using Grid Lines */
+    .gallery__card--hero {
+        /* Starts col line 1, spans to col line 3 (takes up 2 columns) */
+        grid-column: 1 / 3;
+        /* Starts row line 1, spans to row line 3 (takes up 2 rows) */
+        grid-row: 1 / 3;
+    }
+
+    .gallery--explicit .gallery__card:nth-child(2) {
+        /* Takes up cols 3 and 4 */
+        grid-column: 3 / 5;
+        grid-row: 1 / 2;
+    }
+
+    .gallery__card--tall {
+        /* Tall image on the right */
+        grid-column: 4 / 5;
+        grid-row: 2 / 3;
+    }
+
+    .gallery--explicit .gallery__card:nth-child(4) {
+        /* Fills the remaining hole */
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+    }
+}
+
+/* ==========================================================================
+   9. Footer
+   ========================================================================== */
+.site-footer {
+    background-color: var(--color-bg-alt);
+    padding: var(--spacing-lg) 0;
+    margin-top: var(--spacing-xl);
+    border-top: 1px solid rgba(0,0,0,0.05);
+}
+
+.footer-inner {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-md);
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+    .footer-tech {
+        justify-self: end;
+        text-align: right;
+    }
+}
+
+.footer-tech p {
+    color: var(--color-text-light);
+    font-size: var(--text-sm);
+}
+
+/* ==========================================================================
+   10. Animations & Accessibility
+   ========================================================================== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    /* Uses custom property --anim-delay set in HTML inline styles for staggered loading */
+    animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+    animation-delay: var(--anim-delay, 0s);
+}
+
+/* Accessibility: Visible Focus State */
+a:focus-visible,
+.gallery__card:focus-visible {
+    outline: 3px solid var(--color-text);
+    outline-offset: 4px;
+}
+
+/* Accessibility: Respect User OS Motion Preferences */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .gallery__overlay {
+        opacity: 1; /* Make text always visible if no transitions occur */
+        background: rgba(0,0,0,0.6);
+    }
+    
+    .gallery__caption {
+        transform: none;
+    }
+}
