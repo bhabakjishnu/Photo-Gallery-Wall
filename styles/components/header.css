@@ -1,10 +1,9 @@
 .site-header {
-    background-color: var(--color-bg-alt);
+    background-color: var(--color-bg);
     padding: var(--spacing-md) 0;
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 
     & .header-inner {
         display: grid;
