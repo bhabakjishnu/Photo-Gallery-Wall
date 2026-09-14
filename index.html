@@ -28,15 +28,25 @@
     </header>
 
     <main>
-        <!-- Hero Section (Updated to Casual Flexbox Layout) -->
-        <section class="hero">
-            <h1 class="hero__title">Seeing the world<br>through a grid.</h1>
-            <p class="hero__description">
-                An architectural exploration of light, space, and modern web layouts.
-                Built entirely with semantic HTML5 and modern CSS features.
-            </p>
-            <div class="hero__actions">
-                <a href="#featured" class="btn">View Gallery</a>
+        <!-- Hero Section -->
+        <section class="hero container">
+            <div class="hero__content">
+                <h1 class="hero__title">Seeing the world<br>through a grid.</h1>
+                <p class="hero__description">
+                    An architectural exploration of light, space, and modern web layouts.
+                    Built entirely with semantic HTML5 and CSS Grid.
+                </p>
+                <div class="hero__actions">
+                    <a href="#featured" class="btn">View Gallery</a>
+                </div>
+            </div>
+
+            <!-- Hero Grid Visual Element -->
+            <div class="hero__visual" aria-hidden="true">
+                <div class="grid-cube"></div> <!-- Top spanning block -->
+                <div class="grid-cube"></div> <!-- Bottom left block -->
+                <div class="grid-cube"></div> <!-- Bottom middle block -->
+                <div class="grid-cube"></div> <!-- Tall right black block -->
             </div>
         </section>
 

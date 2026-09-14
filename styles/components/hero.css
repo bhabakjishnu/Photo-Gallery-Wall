@@ -1,45 +1,67 @@
 .hero {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    padding: var(--spacing-xl) var(--spacing-md);
     align-items: center;
-    text-align: center;
-    
-    /* Small top padding to touch the nav, large bottom padding to breathe */
-    padding: var(--spacing-md) var(--spacing-md) var(--spacing-xl);
-    
-    /* Contain the width for a comfortable reading experience */
-    max-width: 800px;
-    margin: 0 auto;
+    min-height: 60vh;
+
+    @media (min-width: 768px) {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
     &__title {
         font-size: var(--text-xl);
-        font-weight: 700; /* Softened from 800 for a more casual look */
+        font-weight: 800;
         line-height: 1.1;
-        letter-spacing: -0.02em;
-        margin-bottom: var(--spacing-sm);
-        
-        /* Optional: Add a subtle text balance if supported (Modern CSS feature) */
-        text-wrap: balance; 
+        letter-spacing: -0.03em;
+        margin-bottom: var(--spacing-md);
     }
 
     &__description {
-        /* Slightly larger font for a friendlier, conversational tone */
-        font-size: var(--text-base); 
+        font-size: var(--text-base);
         color: var(--color-text-light);
-        margin-bottom: var(--spacing-lg);
-        max-width: 600px;
-        line-height: 1.5;
-        
-        @media (min-width: 768px) {
-            font-size: var(--text-lg); /* Scales up slightly on desktop */
-        }
+        max-width: 500px;
+        margin-bottom: var(--spacing-md);
     }
 
-    /* Wrap the button if you want to add secondary buttons later */
-    &__actions {
-        display: flex;
-        gap: var(--spacing-sm);
-        justify-content: center;
-        flex-wrap: wrap;
+    &__visual {
+        display: none;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(2, 120px);
+        gap: var(--spacing-xs);
+        width: 100%;
+        max-width: 400px;
+        justify-self: end;
+
+        @media (min-width: 768px) { 
+            display: grid; 
+        }
     }
+}
+
+.grid-cube {
+    background: #e0e0e0;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-slow);
+
+    /* Top left block: Spans 2 columns */
+    &:nth-child(1) { 
+        grid-column: 1 / 3; 
+    }
+    
+    /* Right block: Spans 2 rows, solid dark color */
+    &:nth-child(4) { 
+        grid-row: 1 / 3;
+        grid-column: 3 / 4;
+        background: var(--color-text);
+    }
+    
+    &:hover { background: #ccc; }
 }
