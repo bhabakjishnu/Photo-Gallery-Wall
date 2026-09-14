@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lumina | Professional Photo Gallery</title>
     <meta name="description"
-        content="A premium photography gallery demonstrating modern CSS Grid architectures, explicit and implicit grids, and responsive design.">
-    <link rel="stylesheet" href="css/style.css">
+        content="A premium photography gallery demonstrating modern CSS architectures, explicit and implicit grids, and responsive design.">
+    <!-- Main CSS entry point utilizing @layer -->
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
@@ -27,27 +28,15 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
-        <section class="hero container">
-            <div class="hero__content">
-                <h1 class="hero__title">Seeing the world<br>through a grid.</h1>
-                <p class="hero__description">
-                    An architectural exploration of light, space, and modern web layouts.
-                    Built entirely with semantic HTML5 and CSS Grid.
-                </p>
-                <div class="hero__actions">
-                    <a href="#featured" class="btn btn--primary">View Gallery</a>
-                </div>
-            </div>
-
-            <!-- Hero Grid Visual Element (CSS Demonstration) -->
-            <div class="hero__visual" aria-hidden="true">
-                <div class="grid-cube"></div>
-                <div class="grid-cube"></div>
-                <div class="grid-cube"></div>
-                <div class="grid-cube"></div>
-                <div class="grid-cube"></div>
-                <div class="grid-cube"></div>
+        <!-- Hero Section (Updated to Casual Flexbox Layout) -->
+        <section class="hero">
+            <h1 class="hero__title">Seeing the world<br>through a grid.</h1>
+            <p class="hero__description">
+                An architectural exploration of light, space, and modern web layouts.
+                Built entirely with semantic HTML5 and modern CSS features.
+            </p>
+            <div class="hero__actions">
+                <a href="#featured" class="btn">View Gallery</a>
             </div>
         </section>
 
@@ -214,7 +203,7 @@
         <div class="container footer-inner">
             <div class="footer-brand">
                 <span class="brand-logo">Lumina.</span>
-                <p>Architectural photography curated via CSS Grid.</p>
+                <p>Architectural photography curated via Modern CSS.</p>
             </div>
             <div class="footer-tech">
                 <p>Built with ❤️ using <strong>HTML5 & CSS3</strong></p>

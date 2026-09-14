@@ -1,0 +1,51 @@
+.site-header {
+    background-color: var(--color-bg-alt);
+    padding: var(--spacing-md) 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+
+    & .header-inner {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
+        gap: var(--spacing-md);
+    }
+
+    & .brand-logo {
+        font-size: var(--text-lg);
+        font-weight: 800;
+        letter-spacing: -0.02em;
+    }
+
+    & .main-nav { justify-self: end; }
+    
+    & .nav-list {
+        display: grid;
+        grid-auto-flow: column;
+        gap: var(--spacing-md);
+    }
+}
+
+.nav-link {
+    font-size: var(--text-sm);
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 0.25rem;
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-text);
+        transition: width var(--transition-fast);
+    }
+
+    &:hover::after, &:focus-visible::after {
+        width: 100%;
+    }
+}

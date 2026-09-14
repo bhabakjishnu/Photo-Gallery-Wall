@@ -1,0 +1,17 @@
+/* Define specificity layers from lowest to highest */
+@layer base, layouts, components;
+
+/* Base */
+@import 'base/tokens.css' layer(base);
+@import 'base/reset.css' layer(base);
+@import 'base/accessibility.css' layer(base);
+
+/* Layouts */
+@import 'layouts/container.css' layer(layouts);
+@import 'layouts/gallery.css' layer(layouts);
+
+/* Components */
+@import 'components/button.css' layer(components);
+@import 'components/header.css' layer(components);
+@import 'components/hero.css' layer(components);
+@import 'components/footer.css' layer(components);

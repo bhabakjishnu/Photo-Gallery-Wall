@@ -1,0 +1,45 @@
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    
+    /* Small top padding to touch the nav, large bottom padding to breathe */
+    padding: var(--spacing-md) var(--spacing-md) var(--spacing-xl);
+    
+    /* Contain the width for a comfortable reading experience */
+    max-width: 800px;
+    margin: 0 auto;
+
+    &__title {
+        font-size: var(--text-xl);
+        font-weight: 700; /* Softened from 800 for a more casual look */
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin-bottom: var(--spacing-sm);
+        
+        /* Optional: Add a subtle text balance if supported (Modern CSS feature) */
+        text-wrap: balance; 
+    }
+
+    &__description {
+        /* Slightly larger font for a friendlier, conversational tone */
+        font-size: var(--text-base); 
+        color: var(--color-text-light);
+        margin-bottom: var(--spacing-lg);
+        max-width: 600px;
+        line-height: 1.5;
+        
+        @media (min-width: 768px) {
+            font-size: var(--text-lg); /* Scales up slightly on desktop */
+        }
+    }
+
+    /* Wrap the button if you want to add secondary buttons later */
+    &__actions {
+        display: flex;
+        gap: var(--spacing-sm);
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
