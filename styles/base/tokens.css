@@ -1,34 +1,88 @@
 :root {
-    /* Colors */
+    /* Colors (Light Theme Defaults) */
     --color-bg: #f8f9fa;
     --color-bg-alt: #ffffff;
+    --color-surface: #ffffff;
+    --color-card-bg: #ebebeb;
     --color-text: #111111;
-    --color-text-light: #555555;
+    --color-text-light: #5a5a5a;
+    --color-text-muted: #767676;
     --color-white: #ffffff;
-    --color-overlay: rgba(0, 0, 0, 0.65);
+    --color-border: rgba(17, 17, 17, 0.08);
+    --color-border-subtle: rgba(17, 17, 17, 0.04);
+    --color-overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 0.85) 100%);
+    --color-badge-bg: rgba(255, 255, 255, 0.18);
+    --header-bg: rgba(248, 249, 250, 0.88);
 
     /* Typography */
-    --font-primary: "Inter", system-ui, -apple-system, sans-serif;
-    --text-xs: clamp(0.75rem, 1vw, 0.875rem);
-    --text-sm: clamp(0.875rem, 1.5vw, 1rem);
-    --text-base: clamp(1rem, 2vw, 1.125rem);
-    --text-lg: clamp(1.5rem, 3vw, 2rem);
-    --text-xl: clamp(2.5rem, 6vw, 4.5rem);
+    --font-primary: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --text-xs: clamp(0.72rem, 0.9vw, 0.82rem);
+    --text-sm: clamp(0.85rem, 1.2vw, 0.95rem);
+    --text-base: clamp(1rem, 1.6vw, 1.125rem);
+    --text-md: clamp(1.2rem, 2vw, 1.45rem);
+    --text-lg: clamp(1.5rem, 3vw, 2.15rem);
+    --text-xl: clamp(2.35rem, 5.5vw, 4.25rem);
 
     /* Spacing */
+    --spacing-2xs: 0.25rem;
     --spacing-xs: 0.5rem;
     --spacing-sm: 1rem;
-    --spacing-md: 2rem;
-    --spacing-lg: 4rem;
-    --spacing-xl: 8rem;
+    --spacing-md: 1.75rem;
+    --spacing-lg: 3.5rem;
+    --spacing-xl: 6.5rem;
+    --container-padding: clamp(1rem, 3.5vw, 2rem);
 
     /* Grid & UI Configuration */
-    --grid-gap: 1.5rem;
-    --radius-sm: 4px;
-    --radius-md: 8px;
-    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+    --grid-gap: clamp(1rem, 2vw, 1.5rem);
+    --radius-sm: 6px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+    --radius-full: 9999px;
     
-    /* Animation */
+    /* Shadows & Elevation */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.07);
+    --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.22);
+    --backdrop-blur: blur(16px);
+    
+    /* Animation & Transitions */
     --transition-slow: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    --transition-fast: 0.3s ease-out;
+    --transition-normal: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.2s ease-out;
+}
+
+/* System Dark Theme Preference */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        --color-bg: #0d0f12;
+        --color-bg-alt: #13171d;
+        --color-surface: #191e26;
+        --color-card-bg: #1c212a;
+        --color-text: #f3f4f6;
+        --color-text-light: #9ca3af;
+        --color-text-muted: #6b7280;
+        --color-border: rgba(243, 244, 246, 0.12);
+        --color-border-subtle: rgba(243, 244, 246, 0.06);
+        --header-bg: rgba(13, 15, 18, 0.88);
+        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+        --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
+    }
+}
+
+/* Explicit Data Attribute for Dark Theme Override */
+[data-theme="dark"] {
+    --color-bg: #0d0f12;
+    --color-bg-alt: #13171d;
+    --color-surface: #191e26;
+    --color-card-bg: #1c212a;
+    --color-text: #f3f4f6;
+    --color-text-light: #9ca3af;
+    --color-text-muted: #6b7280;
+    --color-border: rgba(243, 244, 246, 0.12);
+    --color-border-subtle: rgba(243, 244, 246, 0.06);
+    --header-bg: rgba(13, 15, 18, 0.88);
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
+    --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
 }
