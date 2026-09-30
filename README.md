@@ -80,6 +80,8 @@ The stylesheet employs modern CSS cascade layers to organize rules by responsibi
 @import 'components/button.css' layer(components);
 @import 'components/header.css' layer(components);
 @import 'components/hero.css' layer(components);
+@import 'components/about.css' layer(components);
+@import 'components/lightbox.css' layer(components);
 @import 'components/footer.css' layer(components);
 ```
 
@@ -95,27 +97,43 @@ The **Featured Editorial** gallery is orchestrated via a deterministic 2-dimensi
 /* layouts/gallery.css */
 .gallery--explicit {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 400px);
+    grid-template-columns: 1fr;
     gap: var(--grid-gap);
 }
 
-/* Hero card occupies a prominent 2x2 coordinate space */
-.gallery__card--hero {
-    grid-column: 1 / 3;
-    grid-row: 1 / 3;
+/* Intermediate Tablet Breakpoint: 2 Balanced Columns */
+@media (min-width: 640px) and (max-width: 1023px) {
+    .gallery--explicit {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .gallery__card--hero {
+        grid-column: 1 / -1;
+        aspect-ratio: 16/9;
+    }
 }
 
-/* Secondary editorial item spans two horizontal tracks */
-.gallery__card:nth-child(2) {
-    grid-column: 3 / 5;
-    grid-row: 1 / 2;
-}
-
-/* Vertical portrait card spans bottom-right track */
-.gallery__card--tall {
-    grid-column: 4 / 5;
-    grid-row: 2 / 3;
+/* Desktop Viewport: 4-Column 2-Row Explicit Blueprint */
+@media (min-width: 1024px) {
+    .gallery--explicit {
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 380px);
+    }
+    .gallery__card--hero {
+        grid-column: 1 / 3;
+        grid-row: 1 / 3;
+    }
+    .gallery__card:nth-child(2) {
+        grid-column: 3 / 5;
+        grid-row: 1 / 2;
+    }
+    .gallery__card--tall {
+        grid-column: 4 / 5;
+        grid-row: 2 / 3;
+    }
+    .gallery__card:nth-child(4) {
+        grid-column: 3 / 4;
+        grid-row: 2 / 3;
+    }
 }
 ```
 
@@ -129,8 +147,8 @@ The **Discover** section leverages implicit track generation and the browser's n
 /* layouts/gallery.css */
 .gallery--implicit {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-auto-rows: 300px;
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+    grid-auto-rows: 290px;
     grid-auto-flow: dense;
     gap: var(--grid-gap);
 }
@@ -142,12 +160,19 @@ The **Discover** section leverages implicit track generation and the browser's n
 }
 ```
 
-> **Why `grid-auto-flow: dense`?**  
-> If an upcoming card is too large to fit in the current row track, the browser normally leaves an empty void. With `dense`, the browser scans forward and back-fills smaller 1x1 cards into earlier gaps, delivering a cohesive masonry feel without JavaScript layout calculations.
+---
+
+### 4. Accessible Native Lightbox Modal (`<dialog>`)
+
+Lumina features a zero-dependency, fully accessible modal lightbox built on the native HTML5 `<dialog>` specification with:
+- Native focus trapping and Escape key dismiss.
+- Left / Right keyboard arrow navigation between images.
+- Full high-resolution preview and metadata (Title, Category, Location, Counter).
+- Restores focus to the triggering card element upon closure.
 
 ---
 
-### 4. Grid Stacking Context (No `position: absolute`)
+### 5. Grid Stacking Context (No `position: absolute`)
 
 Rather than resorting to classic `position: relative` / `position: absolute` hacks for card overlays, Lumina stacks the photo and caption overlay inside a unified 1x1 Grid cell:
 
@@ -167,29 +192,23 @@ Rather than resorting to classic `position: relative` / `position: absolute` hac
 }
 ```
 
-This guarantees:
-1. Natural dimensional parity without height synchronization issues.
-2. Hardware-accelerated transitions on `transform` and `opacity`.
-3. Cleaner DOM layering without parent coordinate detachment.
-
 ---
 
-### 5. Fluid Typography & Spacing System (`clamp()`)
+### 6. Fluid Typography & Spacing System (`clamp()`)
 
 All core typography and spatial dimensions are calculated fluidly via CSS mathematical functions:
 
 ```css
 /* base/tokens.css */
 :root {
-    --text-xs: clamp(0.75rem, 1vw, 0.875rem);
-    --text-sm: clamp(0.875rem, 1.5vw, 1rem);
-    --text-base: clamp(1rem, 2vw, 1.125rem);
-    --text-lg: clamp(1.5rem, 3vw, 2rem);
-    --text-xl: clamp(2.5rem, 5vw, 4.25rem);
+    --text-xs: clamp(0.72rem, 0.9vw, 0.82rem);
+    --text-sm: clamp(0.85rem, 1.2vw, 0.95rem);
+    --text-base: clamp(1rem, 1.6vw, 1.125rem);
+    --text-md: clamp(1.2rem, 2vw, 1.45rem);
+    --text-lg: clamp(1.5rem, 3vw, 2.15rem);
+    --text-xl: clamp(2.35rem, 5.5vw, 4.25rem);
 }
 ```
-
-This ensures proportional visual scaling between mobile viewports and large desktop monitors without arbitrary breakpoint jumps.
 
 ---
 
@@ -197,11 +216,13 @@ This ensures proportional visual scaling between mobile viewports and large desk
 
 | Category | Implementation Detail |
 | :--- | :--- |
-| **Semantic HTML5** | Built using `<header>`, `<nav>`, `<main>`, `<section>`, `<figure>`, `<figcaption>`, and `<footer>` landmarks for full assistive technology parsing. |
-| **Keyboard Navigation** | Accessible navigation with prominent, high-contrast `:focus-visible` outlines (`outline: 3px solid var(--color-text); outline-offset: 4px;`). |
-| **Reduced Motion** | `@media (prefers-reduced-motion: reduce)` globally disables all keyframes, transitions, and transforms, providing fully visible static captions. |
-| **Image Optimization** | Images implement `loading="lazy"` to defer off-screen loading and optimize First Input Delay (FID) and bandwidth. |
-| **Asset Preconnection** | Google Fonts utilize `preconnect` to optimize TLS handshake times and eliminate font render-blocking. |
+| **Semantic HTML5** | Built using `<header>`, `<nav>`, `<main>`, `<section>`, `<figure>`, `<figcaption>`, and `<footer>` landmarks. |
+| **Skip Link** | Dedicated `.skip-link` immediately shifts keyboard focus to `#main-content`. |
+| **Keyboard Navigation** | Accessible buttons with custom `:focus-visible` indicators and full keyboard trapping in lightbox. |
+| **Reduced Motion** | `@media (prefers-reduced-motion: reduce)` disables keyframe transforms and transitions globally. |
+| **Touch Optimization** | `@media (hover: none)` presents permanent legible captions on mobile touchscreens without hover lock. |
+| **Image Optimization** | Explicit `width` and `height`, `loading="lazy"`, `decoding="async"`, and `fetchpriority="high"` on LCP hero image. |
+| **SEO & Social Graph** | Open Graph, Twitter Cards, Schema.org `ImageGallery` JSON-LD, and SVG Favicon. |
 
 ---
 
@@ -213,23 +234,28 @@ Photo-Gallery-Wall/
 ├── index.html                     # Semantic HTML5 root document
 ├── README.md                      # Engineering documentation & architecture guide
 │
+├── scripts/
+│   └── gallery.js                 # Zero-dependency interaction engine (lightbox, theme, filters)
+│
 └── styles/
     ├── main.css                   # Root stylesheet defining CSS @layer hierarchy
     │
     ├── base/
-    │   ├── tokens.css             # Design tokens: typography clamp(), colors, spacing, transitions
-    │   ├── reset.css              # Modern CSS reset & base element normalization
-    │   └── accessibility.css      # Focus states, keyframe animations, & prefers-reduced-motion
+    │   ├── tokens.css             # Design tokens: fluid clamp(), dark mode, elevation, colors
+    │   ├── reset.css              # Modern CSS reset & dialog/smooth-scroll normalization
+    │   └── accessibility.css      # Skip link, sr-only, focus states, prefers-reduced-motion
     │
     ├── layouts/
-    │   ├── container.css          # Responsive container width constraints
+    │   ├── container.css          # Fluid container width constraints
     │   └── gallery.css            # Explicit (editorial) & implicit (auto-flow) grid engines
     │
     └── components/
-        ├── header.css             # Sticky navigation bar & interactive underline transitions
-        ├── hero.css               # Architectural hero section & 2D asymmetrical visual grid
-        ├── button.css             # Action buttons with micro-interactions
-        └── footer.css             # Semantic dual-column responsive footer
+        ├── header.css             # Sticky glassmorphic nav & responsive mobile drawer
+        ├── hero.css               # Architectural hero section & modernist 2D visual grid
+        ├── button.css             # Button variants with micro-interactions
+        ├── about.css              # Standards & architectural philosophy cards
+        ├── lightbox.css           # Native HTML5 <dialog> modal viewer
+        └── footer.css             # 3-column responsive footer & back-to-top action
 ```
 
 ---
