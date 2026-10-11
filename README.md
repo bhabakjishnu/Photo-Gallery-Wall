@@ -62,7 +62,7 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 - **Intermediate Tablet Grid:** Smooth 2-column tablet layout (`640px`–`1023px`) eliminating abrupt mobile drops.
 - **Accessible Native Lightbox Modal (`<dialog>`):** Native focus trapping, backdrop blur, `Escape` key dismiss, and cyclic `Left`/`Right` arrow navigation.
 - **Interactive Category Filtering:** Real-time gallery filtering (`All Works`, `Architecture`, `Interior`, `Urban`, `Minimal`) updating DOM state and ARIA attributes.
-- **Dual-Mode Theme Engine:** Defaults to light mode with manual toggle override, anti-FOUC initialization, and `localStorage` persistence.
+- **Dual-Mode Theme Engine:** Defaults to light mode on every fresh visit, with anti-FOUC early initialization, legacy `localStorage` purge, and `sessionStorage` persistence for active browsing sessions.
 - **Fluid Design Tokens:** Proportional scaling for typography and spacing via CSS `clamp()` from mobile to 4K ultra-wide screens.
 - **Architectural Hero Visual Grid:** Abstract 2D grid visual composition with coordinates and micro-indicators.
 - **Touchscreen Adaptations:** Automatic caption visibility on non-hover devices via `@media (hover: none)`.
@@ -77,7 +77,7 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 | :--- | :--- | :--- |
 | **Markup** | HTML5 | Semantic HTML Living Standard (`<header>`, `<nav>`, `<main>`, `<section>`, `<dialog>`, `<footer>`) |
 | **Styles** | Vanilla CSS3 | Modern CSS specifications: `@layer`, CSS Grid Level 2, CSS Math (`clamp()`), Native Nesting, Custom Properties |
-| **Scripting** | Vanilla JavaScript | Modern ECMAScript (ES2022+): `IntersectionObserver`, HTMLDialogElement API, `matchMedia`, `localStorage` |
+| **Scripting** | Vanilla JavaScript | Modern ECMAScript (ES2022+): `IntersectionObserver`, HTMLDialogElement API, `matchMedia`, `sessionStorage` |
 | **Fonts** | Google Fonts | Inter (weights: 400, 500, 600, 700, 800, 900) with TLS `preconnect` |
 | **Assets** | Unsplash CDN | Curated, high-availability architectural photography delivered over HTTPS |
 | **Icons** | Inline SVG | Scalable vector graphics embedded directly in markup and CSS (zero external icon font files) |
@@ -268,10 +268,11 @@ document.addEventListener('DOMContentLoaded', () => {
 ### Module Breakdown
 
 1. **`initTheme()`:**
-   - Defaults to light mode on initial visit, ensuring consistent presentation.
-   - Checks `localStorage.getItem('lumina-theme')` to restore saved user preference.
+   - Defaults to light mode on every fresh visit, ensuring consistent clean presentation.
+   - Purges any stale legacy `localStorage` theme overrides that may have locked the browser into dark mode.
+   - Reads `sessionStorage.getItem('lumina-theme')` to maintain theme continuity during the active session.
    - Sets `document.documentElement.setAttribute('data-theme', theme)`.
-   - Toggles theme on `#theme-toggle` click and saves choice to `localStorage`.
+   - Toggles theme on `#theme-toggle` click and stores preference in `sessionStorage`.
    - Updates `aria-label` dynamically for screen reader accessibility.
 
 2. **`initMobileNav()`:**
