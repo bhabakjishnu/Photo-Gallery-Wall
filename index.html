@@ -36,13 +36,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
-    <!-- Early Theme Initialization: Ensures default light mode without flash -->
+    <!-- Early Theme Initialization: Ensures default light mode without flash and purges legacy dark lock -->
     <script>
         (function () {
-            const savedTheme = localStorage.getItem('lumina-theme');
-            if (savedTheme === 'dark') {
-                document.documentElement.setAttribute('data-theme', 'dark');
-            } else {
+            try {
+                // Purge stale legacy localStorage theme that forced dark mode on load
+                localStorage.removeItem('lumina-theme');
+            } catch (e) {}
+
+            try {
+                const savedTheme = sessionStorage.getItem('lumina-theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {
                 document.documentElement.setAttribute('data-theme', 'light');
             }
         })();

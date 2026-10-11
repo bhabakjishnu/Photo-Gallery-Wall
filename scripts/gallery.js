@@ -20,10 +20,11 @@ if (typeof document !== 'undefined') {
 /**
  * Initializes the color theme management.
  *
- * Ensures the gallery opens in 'light' mode by default unless the user
- * has explicitly chosen and persisted 'dark' mode in localStorage.
- * Handles theme toggling, updates accessibility ARIA attributes, and synchronizes
- * the browser viewport meta theme-color.
+ * Ensures the gallery opens in 'light' mode by default on every new visit or tab.
+ * Cleans up legacy localStorage keys that previously forced dark mode upon loading.
+ * Supports manual toggling between light and dark modes within the active browsing session,
+ * updating ARIA accessibility attributes, the document root data-theme attribute,
+ * and the browser viewport meta theme-color.
  *
  * @returns {void}
  */
@@ -31,9 +32,23 @@ function initTheme() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (!themeToggleBtn) return;
 
-    // Default to 'light' mode unless explicitly saved as 'dark'
-    const savedTheme = localStorage.getItem('lumina-theme');
-    const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
+    // Purge any stale legacy localStorage theme that forced dark mode on load
+    try {
+        localStorage.removeItem('lumina-theme');
+    } catch (e) {
+        // Storage access may be restricted in sandboxed environments
+    }
+
+    // Retrieve active session theme, defaulting to 'light' mode
+    let initialTheme = 'light';
+    try {
+        const savedSessionTheme = sessionStorage.getItem('lumina-theme');
+        if (savedSessionTheme === 'dark') {
+            initialTheme = 'dark';
+        }
+    } catch (e) {
+        // Default remains 'light'
+    }
     
     applyTheme(initialTheme);
 
@@ -42,7 +57,11 @@ function initTheme() {
         const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
         applyTheme(newTheme);
-        localStorage.setItem('lumina-theme', newTheme);
+        try {
+            sessionStorage.setItem('lumina-theme', newTheme);
+        } catch (e) {
+            // Silently ignore storage quota or permission errors
+        }
     });
 
     /**
