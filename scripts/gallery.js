@@ -4,49 +4,61 @@
  * Accessible native <dialog> lightbox, theme toggling, and category filters.
  */
 
-document.addEventListener('DOMContentLoaded', () => {
-    initTheme();
-    initMobileNav();
-    initCategoryFilters();
-    initLightbox();
-    initScrollSpy();
-});
+if (typeof document !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+        initTheme();
+        initMobileNav();
+        initCategoryFilters();
+        initLightbox();
+        initScrollSpy();
+    });
+}
 
 /* ==========================================================================
    1. Theme Toggle Management
    ========================================================================== */
+/**
+ * Initializes the color theme management.
+ *
+ * Ensures the gallery opens in 'light' mode by default unless the user
+ * has explicitly chosen and persisted 'dark' mode in localStorage.
+ * Handles theme toggling, updates accessibility ARIA attributes, and synchronizes
+ * the browser viewport meta theme-color.
+ *
+ * @returns {void}
+ */
 function initTheme() {
     const themeToggleBtn = document.getElementById('theme-toggle');
     if (!themeToggleBtn) return;
 
+    // Default to 'light' mode unless explicitly saved as 'dark'
     const savedTheme = localStorage.getItem('lumina-theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme === 'dark' ? 'dark' : 'light';
     
-    // Apply saved theme or defer to OS preference
-    if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-        updateThemeAria(savedTheme);
-    } else {
-        updateThemeAria(prefersDark ? 'dark' : 'light');
-    }
+    applyTheme(initialTheme);
 
     themeToggleBtn.addEventListener('click', () => {
-        const currentTheme = document.documentElement.getAttribute('data-theme');
-        let newTheme;
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-        if (currentTheme) {
-            newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-        } else {
-            newTheme = prefersDark ? 'light' : 'dark';
-        }
-
-        document.documentElement.setAttribute('data-theme', newTheme);
+        applyTheme(newTheme);
         localStorage.setItem('lumina-theme', newTheme);
-        updateThemeAria(newTheme);
     });
 
-    function updateThemeAria(theme) {
+    /**
+     * Applies the chosen theme to the document root and updates accessibility attributes.
+     *
+     * @param {'light'|'dark'} theme - The theme to apply.
+     */
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
         themeToggleBtn.setAttribute('aria-label', `Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`);
+        
+        // Synchronize browser mobile status bar theme color if present
+        const metaThemeColor = document.querySelector('meta[name="theme-color"]');
+        if (metaThemeColor) {
+            metaThemeColor.setAttribute('content', theme === 'dark' ? '#0d0f12' : '#f8f9fa');
+        }
     }
 }
 
@@ -275,4 +287,9 @@ function initScrollSpy() {
     });
 
     sections.forEach(sec => observer.observe(sec));
+}
+
+/* Export functions for automated unit testing in Node.js environments */
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = { initTheme };
 }
