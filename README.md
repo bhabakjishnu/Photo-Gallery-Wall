@@ -13,32 +13,43 @@
 
 ---
 
+## Desktop Preview
+
+<p align="center">
+  <img src="assets/desktop-preview.png" alt="Lumina Architectural Photo Gallery Wall — Desktop Preview" width="850">
+  <br>
+  <em>Desktop viewport preview (1440×900) showcasing sticky navigation, modernist hero visual grid, and editorial typography.</em>
+</p>
+
+---
+
 ## Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [Features](#features)
-3. [Technology Stack](#technology-stack)
-4. [Requirements & Prerequisites](#requirements--prerequisites)
-5. [Repository Structure](#repository-structure)
-6. [System Architecture](#system-architecture)
-7. [CSS Architecture & Cascade Layers](#css-architecture--cascade-layers)
-8. [Design Tokens System](#design-tokens-system)
-9. [Component & Layout Responsibilities](#component--layout-responsibilities)
-10. [JavaScript Architecture & Interaction Engine](#javascript-architecture--interaction-engine)
-11. [Data & User Interaction Flows](#data--user-interaction-flows)
-12. [Accessibility Architecture](#accessibility-architecture)
-13. [Responsive Layout Strategy](#responsive-layout-strategy)
-14. [Local Development Guide](#local-development-guide)
-15. [How to Modify the Project](#how-to-modify-the-project)
-16. [Testing & Quality Assurance Checklist](#testing--quality-assurance-checklist)
-17. [Troubleshooting Guide](#troubleshooting-guide)
-18. [Performance & Core Web Vitals](#performance--core-web-vitals)
-19. [Security Considerations](#security-considerations)
-20. [Browser Compatibility](#browser-compatibility)
-21. [New Developer Onboarding](#new-developer-onboarding)
-22. [Known Limitations](#known-limitations)
-23. [Future Improvements](#future-improvements)
-24. [License](#license)
+1. [Desktop Preview](#desktop-preview)
+2. [Project Overview](#project-overview)
+3. [Features](#features)
+4. [Technology Stack](#technology-stack)
+5. [Requirements & Prerequisites](#requirements--prerequisites)
+6. [Repository Structure](#repository-structure)
+7. [System Architecture](#system-architecture)
+8. [CSS Architecture & Cascade Layers](#css-architecture--cascade-layers)
+9. [Design Tokens System](#design-tokens-system)
+10. [Component & Layout Responsibilities](#component--layout-responsibilities)
+11. [JavaScript Architecture & Interaction Engine](#javascript-architecture--interaction-engine)
+12. [Data & User Interaction Flows](#data--user-interaction-flows)
+13. [Accessibility Architecture](#accessibility-architecture)
+14. [Responsive Layout Strategy](#responsive-layout-strategy)
+15. [Local Development Guide](#local-development-guide)
+16. [How to Modify the Project](#how-to-modify-the-project)
+17. [Testing & Quality Assurance Checklist](#testing--quality-assurance-checklist)
+18. [Troubleshooting Guide](#troubleshooting-guide)
+19. [Performance & Core Web Vitals](#performance--core-web-vitals)
+20. [Security Considerations](#security-considerations)
+21. [Browser Compatibility](#browser-compatibility)
+22. [New Developer Onboarding](#new-developer-onboarding)
+23. [Known Limitations](#known-limitations)
+24. [Future Improvements](#future-improvements)
+25. [License](#license)
 
 ---
 
@@ -100,6 +111,8 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 ```text
 Photo-Gallery-Wall/
 │
+├── assets/
+│   └── desktop-preview.png        # Production desktop browser preview (1440×900)
 ├── index.html                     # Semantic HTML5 root document, metadata, and landmarks
 ├── README.md                      # Software engineering documentation & architectural reference
 │
