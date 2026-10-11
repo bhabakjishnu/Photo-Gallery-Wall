@@ -51,24 +51,6 @@
     --transition-fast: 0.2s ease-out;
 }
 
-/* System Dark Theme Preference */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --color-bg: #0d0f12;
-        --color-bg-alt: #13171d;
-        --color-surface: #191e26;
-        --color-card-bg: #1c212a;
-        --color-text: #f3f4f6;
-        --color-text-light: #9ca3af;
-        --color-text-muted: #6b7280;
-        --color-border: rgba(243, 244, 246, 0.12);
-        --color-border-subtle: rgba(243, 244, 246, 0.06);
-        --header-bg: rgba(13, 15, 18, 0.88);
-        --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
-        --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.45);
-        --shadow-hover: 0 24px 48px -12px rgba(0, 0, 0, 0.6);
-    }
-}
 
 /* Explicit Data Attribute for Dark Theme Override */
 [data-theme="dark"] {

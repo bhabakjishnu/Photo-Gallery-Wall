@@ -62,7 +62,7 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 - **Intermediate Tablet Grid:** Smooth 2-column tablet layout (`640px`–`1023px`) eliminating abrupt mobile drops.
 - **Accessible Native Lightbox Modal (`<dialog>`):** Native focus trapping, backdrop blur, `Escape` key dismiss, and cyclic `Left`/`Right` arrow navigation.
 - **Interactive Category Filtering:** Real-time gallery filtering (`All Works`, `Architecture`, `Interior`, `Urban`, `Minimal`) updating DOM state and ARIA attributes.
-- **Dual-Mode Theme Engine:** System preference detection (`prefers-color-scheme`) paired with manual toggle override and `localStorage` persistence.
+- **Dual-Mode Theme Engine:** Defaults to light mode with manual toggle override, anti-FOUC initialization, and `localStorage` persistence.
 - **Fluid Design Tokens:** Proportional scaling for typography and spacing via CSS `clamp()` from mobile to 4K ultra-wide screens.
 - **Architectural Hero Visual Grid:** Abstract 2D grid visual composition with coordinates and micro-indicators.
 - **Touchscreen Adaptations:** Automatic caption visibility on non-hover devices via `@media (hover: none)`.
@@ -268,8 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
 ### Module Breakdown
 
 1. **`initTheme()`:**
-   - Evaluates system preference: `window.matchMedia('(prefers-color-scheme: dark)')`.
-   - Checks `localStorage.getItem('lumina-theme')`.
+   - Defaults to light mode on initial visit, ensuring consistent presentation.
+   - Checks `localStorage.getItem('lumina-theme')` to restore saved user preference.
    - Sets `document.documentElement.setAttribute('data-theme', theme)`.
    - Toggles theme on `#theme-toggle` click and saves choice to `localStorage`.
    - Updates `aria-label` dynamically for screen reader accessibility.

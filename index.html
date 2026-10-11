@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -10,9 +10,8 @@
     <meta name="keywords"
         content="photo gallery, CSS Grid, architectural photography, web design, frontend architecture, accessibility">
     <meta name="author" content="Lumina Design Lab">
-    <!-- Theme Color for Mobile Browsers -->
-    <meta name="theme-color" content="#f8f9fa" media="(prefers-color-scheme: light)">
-    <meta name="theme-color" content="#0d0f12" media="(prefers-color-scheme: dark)">
+    <!-- Theme Color for Mobile Browsers (Defaults to Light Mode) -->
+    <meta name="theme-color" content="#f8f9fa">
     <!-- Open Graph Metadata -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="Lumina | Architectural Photography Gallery">
@@ -37,6 +36,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
+    <!-- Early Theme Initialization: Ensures default light mode without flash -->
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem('lumina-theme');
+            if (savedTheme === 'dark') {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
     <!-- Main CSS Entry Point Utilizing @layer -->
     <link rel="stylesheet" href="styles/main.css">
     <!-- Structured Data (JSON-LD) -->
@@ -69,7 +79,7 @@
 
             <div class="header-controls">
                 <!-- Theme Toggle Button -->
-                <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle color theme">
+                <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to dark mode">
                     <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
                         <circle cx="12" cy="12" r="5" />
                         <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"

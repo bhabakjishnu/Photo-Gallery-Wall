@@ -116,13 +116,6 @@
     }
 }
 
-[data-theme="dark"] .theme-toggle-btn,
-:root:not([data-theme="light"]) .theme-toggle-btn {
-    @media (prefers-color-scheme: dark) {
-        & .icon-sun { display: none; }
-        & .icon-moon { display: block; }
-    }
-}
 [data-theme="dark"] .theme-toggle-btn {
     & .icon-sun { display: none; }
     & .icon-moon { display: block; }
