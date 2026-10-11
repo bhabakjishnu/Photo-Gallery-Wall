@@ -16,9 +16,7 @@
 ## Desktop Preview
 
 <p align="center">
-  <img src="assets/desktop-preview.png" alt="Lumina Architectural Photo Gallery Wall — Desktop Preview" width="850">
-  <br>
-  <em>Desktop viewport preview (1440×900) showcasing sticky navigation, modernist hero visual grid, and editorial typography.</em>
+  <img src="./assets/desktop-preview.png" alt="Desktop Preview" width="100%">
 </p>
 
 ---
@@ -112,7 +110,7 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 Photo-Gallery-Wall/
 │
 ├── assets/
-│   └── desktop-preview.png        # Production desktop browser preview (1440×900)
+│   └── desktop-preview.png        # Production desktop browser preview (1920×1080 Full HD)
 ├── index.html                     # Semantic HTML5 root document, metadata, and landmarks
 ├── README.md                      # Software engineering documentation & architectural reference
 │
