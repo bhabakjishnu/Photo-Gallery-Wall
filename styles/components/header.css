@@ -62,6 +62,15 @@
     position: relative;
     padding: 0.35rem 0.1rem;
     transition: color var(--transition-fast);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+
+    & i {
+        font-size: 0.82em;
+        opacity: 0.75;
+        transition: transform var(--transition-fast), opacity var(--transition-fast);
+    }
 
     &::after {
         content: '';
@@ -78,6 +87,11 @@
     &:hover,
     &.is-active {
         color: var(--color-text);
+
+        & i {
+            opacity: 1;
+            transform: translateY(-1px);
+        }
     }
 
     &:hover::after,
@@ -105,9 +119,14 @@
         transform: scale(1.05);
     }
 
-    & svg {
+    & svg,
+    & i {
+        font-size: 1.05rem;
         width: 1.1rem;
         height: 1.1rem;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         fill: currentColor;
     }
 
@@ -118,7 +137,7 @@
 
 [data-theme="dark"] .theme-toggle-btn {
     & .icon-sun { display: none; }
-    & .icon-moon { display: block; }
+    & .icon-moon { display: inline-flex; }
 }
 
 /* Mobile Hamburger Toggle */

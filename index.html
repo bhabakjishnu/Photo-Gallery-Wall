@@ -90,28 +90,8 @@
             <div class="header-controls">
                 <!-- Theme Toggle Button -->
                 <button type="button" id="theme-toggle" class="theme-toggle-btn" aria-label="Switch to dark mode">
-                    <svg class="icon-sun" viewBox="0 0 24 24" aria-hidden="true">
-                        <circle cx="12" cy="12" r="5" />
-                        <line x1="12" y1="1" x2="12" y2="3" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="12" y1="21" x2="12" y2="23" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="1" y1="12" x2="3" y2="12" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="21" y1="12" x2="23" y2="12" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" />
-                    </svg>
-                    <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-                    </svg>
+                    <i class="fa-solid fa-sun icon-sun" aria-hidden="true"></i>
+                    <i class="fa-solid fa-moon icon-moon" aria-hidden="true"></i>
                 </button>
 
                 <!-- Mobile Menu Hamburger Button -->
@@ -126,10 +106,10 @@
             <!-- Primary Navigation Menu -->
             <nav id="main-nav" class="main-nav" aria-label="Main Navigation">
                 <ul class="nav-list" id="nav-list">
-                    <li><a href="#home" class="nav-link is-active">Home</a></li>
-                    <li><a href="#featured" class="nav-link">Featured</a></li>
-                    <li><a href="#discover" class="nav-link">Discover</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#home" class="nav-link is-active"><i class="fa-solid fa-house" aria-hidden="true"></i> Home</a></li>
+                    <li><a href="#featured" class="nav-link"><i class="fa-solid fa-star" aria-hidden="true"></i> Featured</a></li>
+                    <li><a href="#discover" class="nav-link"><i class="fa-solid fa-compass" aria-hidden="true"></i> Discover</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> About</a></li>
                 </ul>
             </nav>
         </div>
@@ -140,15 +120,15 @@
         <!-- Hero Section -->
         <section id="home" class="hero container">
             <div class="hero__content">
-                <span class="hero__eyebrow">Editorial Architecture & Spatial Design</span>
+                <span class="hero__eyebrow"><i class="fa-solid fa-compass-drafting" aria-hidden="true"></i> Editorial Architecture & Spatial Design</span>
                 <h1 class="hero__title">Seeing the world<br><span class="highlight">through a grid.</span></h1>
                 <p class="hero__description">
                     An architectural curation of light, volume, and modernist structure.
                     Built strictly with semantic HTML5, CSS Grid Level 2, and Cascade Layers.
                 </p>
                 <div class="hero__actions">
-                    <a href="#featured" class="btn">View Gallery</a>
-                    <a href="#about" class="btn btn--outline">Architecture Notes</a>
+                    <a href="#featured" class="btn">View Gallery <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+                    <a href="#about" class="btn btn--outline"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Architecture Notes</a>
                 </div>
 
                 <div class="hero__stats">
@@ -177,9 +157,7 @@
                     <div class="cube-indicator"></div>
                 </div>
                 <div class="grid-cube">
-                    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5">
-                        <path d="M4 4h16v16H4zM4 12h16M12 4v16" stroke="currentColor" />
-                    </svg>
+                    <i class="fa-solid fa-table-cells" style="font-size: 2.2rem; opacity: 0.85;" aria-hidden="true"></i>
                 </div>
                 <div class="grid-cube">
                     <span class="cube-badge">MONOLITH</span>
@@ -201,13 +179,12 @@
 
             <!-- Interactive Category Filter Bar -->
             <nav class="gallery-filters" aria-label="Gallery category filters">
-                <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All
-                    Works</button>
+                <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true"><i class="fa-solid fa-border-all" aria-hidden="true"></i> All Works</button>
                 <button type="button" class="filter-btn" data-filter="architecture"
-                    aria-pressed="false">Architecture</button>
-                <button type="button" class="filter-btn" data-filter="interior" aria-pressed="false">Interior</button>
-                <button type="button" class="filter-btn" data-filter="urban" aria-pressed="false">Urban</button>
-                <button type="button" class="filter-btn" data-filter="minimal" aria-pressed="false">Minimal</button>
+                    aria-pressed="false"><i class="fa-solid fa-building" aria-hidden="true"></i> Architecture</button>
+                <button type="button" class="filter-btn" data-filter="interior" aria-pressed="false"><i class="fa-solid fa-couch" aria-hidden="true"></i> Interior</button>
+                <button type="button" class="filter-btn" data-filter="urban" aria-pressed="false"><i class="fa-solid fa-city" aria-hidden="true"></i> Urban</button>
+                <button type="button" class="filter-btn" data-filter="minimal" aria-pressed="false"><i class="fa-solid fa-shapes" aria-hidden="true"></i> Minimal</button>
             </nav>
 
             <div class="gallery gallery--explicit">
@@ -220,19 +197,14 @@
                         alt="Minimalist concrete interior with sunlight pouring through architectural structural gaps"
                         class="gallery__image" width="1200" height="800" fetchpriority="high">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Architecture</span>
                             <h3 class="gallery__title">Concrete & Light</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Kyoto, Japan
                             </p>
                         </figcaption>
@@ -248,19 +220,14 @@
                         alt="Minimalist sunlit room with single modernist chair and sculpted archway"
                         class="gallery__image" width="800" height="600" loading="lazy" decoding="async">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Interior</span>
                             <h3 class="gallery__title">Negative Space</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Milan, Italy
                             </p>
                         </figcaption>
@@ -276,19 +243,14 @@
                         alt="Low angle view looking up at a towering contemporary glass skyscraper against blue sky"
                         class="gallery__image" width="800" height="1200" loading="lazy" decoding="async">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Urban</span>
                             <h3 class="gallery__title">Vertical Monolith</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 New York, USA
                             </p>
                         </figcaption>
@@ -304,19 +266,14 @@
                         alt="Abstract geometric reflection patterns across high-rise corporate building glass exterior"
                         class="gallery__image" width="800" height="600" loading="lazy" decoding="async">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Minimal</span>
                             <h3 class="gallery__title">Glass Facade</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 London, UK
                             </p>
                         </figcaption>
@@ -347,19 +304,14 @@
                         alt="Sculptural wooden staircase inside a minimalist contemporary residence"
                         class="gallery__image" width="800" height="600">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Interior</span>
                             <h3 class="gallery__title">Linear Flow</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Zurich, Switzerland
                             </p>
                         </figcaption>
@@ -376,19 +328,14 @@
                         alt="Spacious industrial loft office with wide timber floors and exposed brick arches"
                         class="gallery__image" width="1200" height="700">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Architecture</span>
                             <h3 class="gallery__title">Industrial Scale</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Berlin, Germany
                             </p>
                         </figcaption>
@@ -405,19 +352,14 @@
                         alt="Vertical perspective of soaring classical and modern downtown architectural towers"
                         class="gallery__image" width="800" height="1200">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Urban</span>
                             <h3 class="gallery__title">Urban Arteries</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Chicago, USA
                             </p>
                         </figcaption>
@@ -434,19 +376,14 @@
                         alt="Graceful concrete curves creating dramatic architectural shadow contrasts"
                         class="gallery__image" width="800" height="600">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Minimal</span>
                             <h3 class="gallery__title">Shadow Play</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Lisbon, Portugal
                             </p>
                         </figcaption>
@@ -463,19 +400,14 @@
                         alt="Pure white minimalist gallery walls converging in sharp spatial angles"
                         class="gallery__image" width="800" height="600">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Minimal</span>
                             <h3 class="gallery__title">The White Cube</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Basel, Switzerland
                             </p>
                         </figcaption>
@@ -492,19 +424,14 @@
                         alt="Expansive curved timber ceiling canopy in a landmark civic auditorium"
                         class="gallery__image" width="1200" height="700">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Architecture</span>
                             <h3 class="gallery__title">Organic Geometry</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Oslo, Norway
                             </p>
                         </figcaption>
@@ -521,19 +448,14 @@
                         alt="Close-up of glass skyscraper curtain wall mirroring dynamic cloud reflections"
                         class="gallery__image" width="800" height="600">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Urban</span>
                             <h3 class="gallery__title">Reflections</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Singapore
                             </p>
                         </figcaption>
@@ -550,19 +472,14 @@
                         alt="Monumental central museum corridor lined with perfectly symmetrical neoclassical archways"
                         class="gallery__image" width="800" height="600">
                     <div class="gallery__badge-corner" aria-hidden="true">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7" />
-                        </svg>
+                        <i class="fa-solid fa-expand" aria-hidden="true"></i>
                     </div>
                     <div class="gallery__overlay">
                         <figcaption class="gallery__caption">
                             <span class="gallery__category">Interior</span>
                             <h3 class="gallery__title">Symmetry</h3>
                             <p class="gallery__location">
-                                <svg viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                                </svg>
+                                <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                                 Paris, France
                             </p>
                         </figcaption>
@@ -603,9 +520,7 @@
                 <div class="about-features">
                     <div class="feature-card">
                         <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                            </svg>
+                            <i class="fa-solid fa-layer-group" aria-hidden="true"></i>
                         </div>
                         <h4>CSS Cascade Layers</h4>
                         <p>Predictable specificity ordering via <code>@layer base, layouts, components</code>
@@ -614,10 +529,7 @@
 
                     <div class="feature-card">
                         <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="3" y="3" width="18" height="18" rx="2" />
-                                <path d="M3 9h18M9 21V9" />
-                            </svg>
+                            <i class="fa-solid fa-border-all" aria-hidden="true"></i>
                         </div>
                         <h4>Explicit 2D Coordinates</h4>
                         <p>Handcrafted magazine blueprint pinning featured images to precise row and column intervals.
@@ -626,9 +538,7 @@
 
                     <div class="feature-card">
                         <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" />
-                            </svg>
+                            <i class="fa-solid fa-cubes" aria-hidden="true"></i>
                         </div>
                         <h4>Dense Auto-Packing</h4>
                         <p>Native browser algorithm back-filling unoccupied grid cells without JavaScript calculations.
@@ -637,10 +547,7 @@
 
                     <div class="feature-card">
                         <div class="feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10" />
-                                <path d="m4.93 4.93 14.14 14.14" />
-                            </svg>
+                            <i class="fa-solid fa-bolt" aria-hidden="true"></i>
                         </div>
                         <h4>Zero Framework Waste</h4>
                         <p>Instant First Contentful Paint (FCP) and zero Cumulative Layout Shift (CLS) on all devices.
@@ -655,22 +562,15 @@
     <dialog id="lightbox-dialog" class="lightbox" aria-modal="true" aria-label="Photo detail viewer">
         <div class="lightbox-content">
             <button type="button" class="lightbox-close" aria-label="Close dialog (Escape)">
-                <svg viewBox="0 0 24 24" fill="none">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
             </button>
 
             <button type="button" class="lightbox-nav-btn prev-btn" aria-label="Previous photo (Left arrow)">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="15 18 9 12 15 6"></polyline>
-                </svg>
+                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
             </button>
 
             <button type="button" class="lightbox-nav-btn next-btn" aria-label="Next photo (Right arrow)">
-                <svg viewBox="0 0 24 24">
-                    <polyline points="9 18 15 12 9 6"></polyline>
-                </svg>
+                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
             </button>
 
             <div class="lightbox-media">
@@ -682,10 +582,7 @@
                     <span class="lightbox-badge">Category</span>
                     <h3 class="lightbox-title">Title</h3>
                     <p class="lightbox-location">
-                        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-                            <path
-                                d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z" />
-                        </svg>
+                        <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
                         <span class="lightbox-location-text">Location</span>
                     </p>
                 </div>
@@ -700,6 +597,12 @@
             <div class="footer-brand">
                 <span class="brand-logo">Lumina<span class="brand-dot">.</span></span>
                 <p>Architectural photography curated via modern web platform standards and pure CSS Grid Level 2.</p>
+                <div class="footer-social" aria-label="Social media channels">
+                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+                    <a href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+                    <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" aria-label="Dribbble"><i class="fa-brands fa-dribbble" aria-hidden="true"></i></a>
+                </div>
             </div>
 
             <div class="footer-links">
@@ -713,11 +616,9 @@
             <div class="footer-meta">
                 <h4>Platform Craft</h4>
                 <p>Built with <strong>HTML5 & Modern CSS3</strong></p>
-                <p>Zero external runtime dependencies. 100% accessible.</p>
+                <p>Styled with <strong>Poppins</strong> & <strong>Font Awesome</strong></p>
                 <a href="#main-content" class="back-to-top">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="18 15 12 9 6 15"></polyline>
-                    </svg>
+                    <i class="fa-solid fa-arrow-up" aria-hidden="true"></i>
                     Back to Top
                 </a>
             </div>

@@ -1,7 +1,7 @@
 /**
- * Unit tests for External Assets and Typography Configuration.
+ * Unit tests for External Assets, Typography Configuration, and Icon Placements.
  * Validates inclusion of Google Fonts (Poppins), Font Awesome stylesheet links,
- * preconnect origins, and CSS design tokens in accordance with repository standards.
+ * preconnect origins, CSS design tokens, and correct positioning of Font Awesome icons.
  */
 
 const test = require('node:test');
@@ -66,4 +66,55 @@ test('styles/base/tokens.css defines Poppins as the primary font token', () => {
         /--font-primary:\s*"Poppins"/,
         '--font-primary token should specify Poppins font family'
     );
+});
+
+test('index.html integrates Font Awesome icons in theme toggle and navigation', () => {
+    const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+    assert.match(htmlContent, /class="[^"]*fa-sun[^"]*"/, 'Theme toggle should contain fa-sun');
+    assert.match(htmlContent, /class="[^"]*fa-moon[^"]*"/, 'Theme toggle should contain fa-moon');
+    assert.match(htmlContent, /class="[^"]*fa-house[^"]*"/, 'Navigation should contain fa-house');
+    assert.match(htmlContent, /class="[^"]*fa-star[^"]*"/, 'Navigation should contain fa-star');
+    assert.match(htmlContent, /class="[^"]*fa-compass[^"]*"/, 'Navigation should contain fa-compass');
+    assert.match(htmlContent, /class="[^"]*fa-circle-info[^"]*"/, 'Navigation should contain fa-circle-info');
+});
+
+test('index.html integrates Font Awesome icons in category filter buttons', () => {
+    const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+    assert.match(htmlContent, /class="[^"]*fa-border-all[^"]*"/, 'Filter bar should contain fa-border-all');
+    assert.match(htmlContent, /class="[^"]*fa-building[^"]*"/, 'Filter bar should contain fa-building');
+    assert.match(htmlContent, /class="[^"]*fa-couch[^"]*"/, 'Filter bar should contain fa-couch');
+    assert.match(htmlContent, /class="[^"]*fa-city[^"]*"/, 'Filter bar should contain fa-city');
+    assert.match(htmlContent, /class="[^"]*fa-shapes[^"]*"/, 'Filter bar should contain fa-shapes');
+});
+
+test('index.html equips all 12 gallery cards with Font Awesome expand and location icons', () => {
+    const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+    const expandMatches = htmlContent.match(/class="[^"]*fa-expand[^"]*"/g) || [];
+    const locationMatches = htmlContent.match(/class="[^"]*fa-location-dot[^"]*"/g) || [];
+    assert.equal(expandMatches.length, 12, 'All 12 cards should have fa-expand corner badge');
+    assert.ok(locationMatches.length >= 12, 'Cards should feature fa-location-dot');
+});
+
+test('index.html integrates Font Awesome icons in features, lightbox, and footer', () => {
+    const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+    assert.match(htmlContent, /class="[^"]*fa-layer-group[^"]*"/, 'Features should contain fa-layer-group');
+    assert.match(htmlContent, /class="[^"]*fa-cubes[^"]*"/, 'Features should contain fa-cubes');
+    assert.match(htmlContent, /class="[^"]*fa-bolt[^"]*"/, 'Features should contain fa-bolt');
+    assert.match(htmlContent, /class="[^"]*fa-xmark[^"]*"/, 'Lightbox should contain fa-xmark close icon');
+    assert.match(htmlContent, /class="[^"]*fa-chevron-left[^"]*"/, 'Lightbox should contain fa-chevron-left');
+    assert.match(htmlContent, /class="[^"]*fa-chevron-right[^"]*"/, 'Lightbox should contain fa-chevron-right');
+    assert.match(htmlContent, /class="[^"]*fa-arrow-up[^"]*"/, 'Footer should contain fa-arrow-up');
+    assert.match(htmlContent, /class="[^"]*fa-github[^"]*"/, 'Footer social should contain fa-github');
+});
+
+test('decorative icon elements enforce aria-hidden="true" accessibility attribute', () => {
+    const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
+    const iconTags = htmlContent.match(/<i\s+class="[^"]*fa-[^"]*"[^>]*>/g) || [];
+    assert.ok(iconTags.length > 20, 'Should find multiple Font Awesome <i> tags');
+    for (const tag of iconTags) {
+        assert.ok(
+            tag.includes('aria-hidden="true"'),
+            `Decorative icon tag "${tag}" must have aria-hidden="true" attribute`
+        );
+    }
 });
