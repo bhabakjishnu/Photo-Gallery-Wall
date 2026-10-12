@@ -87,9 +87,9 @@ Modern web applications often rely on heavy external JavaScript libraries (such 
 | **Markup** | HTML5 | Semantic HTML Living Standard (`<header>`, `<nav>`, `<main>`, `<section>`, `<dialog>`, `<footer>`) |
 | **Styles** | Vanilla CSS3 | Modern CSS specifications: `@layer`, CSS Grid Level 2, CSS Math (`clamp()`), Native Nesting, Custom Properties |
 | **Scripting** | Vanilla JavaScript | Modern ECMAScript (ES2022+): `IntersectionObserver`, HTMLDialogElement API, `matchMedia`, `sessionStorage` |
-| **Fonts** | Google Fonts | Inter (weights: 400, 500, 600, 700, 800, 900) with TLS `preconnect` |
+| **Fonts** | Google Fonts | Poppins (weights: 100–900, normal & italic) with TLS `preconnect` |
 | **Assets** | Unsplash CDN | Curated, high-availability architectural photography delivered over HTTPS |
-| **Icons** | Inline SVG | Scalable vector graphics embedded directly in markup and CSS (zero external icon font files) |
+| **Icons** | Font Awesome & Inline SVG | Font Awesome 7.3.1 vector icons & accessible inline SVGs |
 
 ---
 
