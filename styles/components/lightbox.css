@@ -81,9 +81,14 @@
         transform: scale(1.05);
     }
 
-    & svg {
+    & svg,
+    & i {
+        font-size: 1.15rem;
         width: 18px;
         height: 18px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         stroke: currentColor;
         stroke-width: 2;
     }
@@ -121,9 +126,14 @@
         right: 1rem;
     }
 
-    & svg {
+    & svg,
+    & i {
+        font-size: 1.25rem;
         width: 20px;
         height: 20px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
         stroke: currentColor;
         stroke-width: 2.5;
         fill: none;
@@ -170,6 +180,18 @@
         display: flex;
         align-items: center;
         gap: 0.35rem;
+
+        & svg,
+        & i {
+            font-size: 12px;
+            width: 13px;
+            height: 13px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            fill: currentColor;
+            opacity: 0.85;
+        }
     }
 }
 

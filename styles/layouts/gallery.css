@@ -52,6 +52,9 @@
 }
 
 .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
     padding: 0.45rem 1rem;
     font-size: var(--text-xs);
     font-weight: 600;
@@ -63,15 +66,30 @@
     transition: all var(--transition-fast);
     cursor: pointer;
 
+    & i {
+        font-size: 0.85em;
+        opacity: 0.8;
+        transition: transform var(--transition-fast);
+    }
+
     &:hover {
         color: var(--color-text);
         border-color: var(--color-text);
+
+        & i {
+            opacity: 1;
+            transform: scale(1.1);
+        }
     }
 
     &.is-active {
         background-color: var(--color-text);
         color: var(--color-bg);
         border-color: var(--color-text);
+
+        & i {
+            opacity: 1;
+        }
     }
 }
 
@@ -139,9 +157,14 @@
         transition: all var(--transition-normal);
         z-index: 3;
 
-        & svg {
+        & svg,
+        & i {
+            font-size: 13px;
             width: 14px;
             height: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             fill: none;
             stroke: currentColor;
             stroke-width: 2;
@@ -185,11 +208,16 @@
         align-items: center;
         gap: 0.35rem;
 
-        & svg {
+        & svg,
+        & i {
+            font-size: 11px;
             width: 12px;
             height: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             fill: currentColor;
-            opacity: 0.85;
+            opacity: 0.9;
         }
     }
 
