@@ -119,6 +119,10 @@
         transform: scale(1.05);
     }
 
+    &:active {
+        transform: scale(0.95);
+    }
+
     & svg,
     & i {
         font-size: 1.05rem;
@@ -128,16 +132,12 @@
         align-items: center;
         justify-content: center;
         fill: currentColor;
-    }
-
-    & .icon-moon {
-        display: none;
+        transition: transform var(--transition-normal);
     }
 }
 
-[data-theme="dark"] .theme-toggle-btn {
-    & .icon-sun { display: none; }
-    & .icon-moon { display: inline-flex; }
+[data-theme="dark"] .theme-toggle-btn i {
+    transform: rotate(180deg);
 }
 
 /* Mobile Hamburger Toggle */
