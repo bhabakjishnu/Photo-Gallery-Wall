@@ -70,8 +70,9 @@ test('styles/base/tokens.css defines Poppins as the primary font token', () => {
 
 test('index.html integrates Font Awesome icons in theme toggle and navigation', () => {
     const htmlContent = fs.readFileSync(INDEX_HTML_PATH, 'utf-8');
-    assert.match(htmlContent, /class="[^"]*fa-sun[^"]*"/, 'Theme toggle should contain fa-sun');
-    assert.match(htmlContent, /class="[^"]*fa-moon[^"]*"/, 'Theme toggle should contain fa-moon');
+    assert.match(htmlContent, /class="[^"]*fa-circle-half-stroke[^"]*"/, 'Theme toggle should contain fa-circle-half-stroke');
+    assert.doesNotMatch(htmlContent, /class="[^"]*fa-sun[^"]*"/, 'Theme toggle should not contain legacy fa-sun mixed icon');
+    assert.doesNotMatch(htmlContent, /class="[^"]*fa-moon[^"]*"/, 'Theme toggle should not contain legacy fa-moon mixed icon');
     assert.match(htmlContent, /class="[^"]*fa-house[^"]*"/, 'Navigation should contain fa-house');
     assert.match(htmlContent, /class="[^"]*fa-star[^"]*"/, 'Navigation should contain fa-star');
     assert.match(htmlContent, /class="[^"]*fa-compass[^"]*"/, 'Navigation should contain fa-compass');
